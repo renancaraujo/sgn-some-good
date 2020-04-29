@@ -29,7 +29,7 @@ class SgnApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: theme,
       title: "SGN - Some good news",
-      initialRoute: '/story',
+      initialRoute: '/',
       routes: {
         '/': (context) => HomeScreen(),
         '/story' : (context) => StoryScreen(),

@@ -25,8 +25,11 @@ class _StoryScreenState extends State<StoryScreen> {
   @override
   void initState() {
     super.initState();
-    controller =
-        PageController(initialPage: widget.startingIndex, keepPage: true);
+    print(widget.startingIndex);
+    controller = PageController(
+      initialPage: widget.startingIndex,
+      keepPage: true,
+    );
 
     controller.addListener(() {
       setState(() {
@@ -46,6 +49,7 @@ class _StoryScreenState extends State<StoryScreen> {
     final storiesList = Provider.of<StoriesStore>(context).stories;
     return Scaffold(
       body: PageView.builder(
+        controller: controller,
         itemCount: storiesList.length,
         itemBuilder: (context, index) {
           return StoryPage(
@@ -66,9 +70,14 @@ class StoryPage extends StatefulWidget {
   final VoidCallback onPrev;
   final double currentPageValue;
 
-  const StoryPage(this.story,
-      {Key key, this.index, this.onNext, this.onPrev, this.currentPageValue})
-      : super(key: key);
+  const StoryPage(
+    this.story, {
+    Key key,
+    this.index,
+    this.onNext,
+    this.onPrev,
+    this.currentPageValue,
+  }) : super(key: key);
 
   @override
   _StoryPageState createState() => _StoryPageState();
@@ -93,10 +102,8 @@ class _StoryPageState extends State<StoryPage> {
 
   get alignment {
     if (widget.index == widget.currentPageValue.floor()) {
-      print(widget.currentPageValue - widget.index);
       return Alignment(0.0 + (widget.currentPageValue - widget.index), 0.0);
     } else if (widget.index == widget.currentPageValue.floor() + 1) {
-      print(widget.currentPageValue - widget.index);
       return Alignment(0.0 + (widget.currentPageValue - widget.index), 0.0);
     } else {
       return Alignment(0.0, 0.0);
