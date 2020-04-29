@@ -43,17 +43,9 @@ class HomeAppBar extends StatelessWidget {
       width: 80,
       child: AspectRatio(
         aspectRatio: 400 / 141,
-        child: Stack(
-          children: <Widget>[
-            Container(
-              constraints: BoxConstraints.expand(),
-              decoration: BoxDecoration(gradient: orangeToRed),
-            ),
-            Image.asset(
-              "assets/ui/logo_outline.png",
-              fit: BoxFit.cover,
-            )
-          ],
+        child: Image.asset(
+          "assets/ui/logo_outline.png",
+          fit: BoxFit.cover,
         ),
       ),
     );
